@@ -53,6 +53,7 @@ fun sumFor(n: Int): Double {
 @Composable
 fun CyclesScreen(modifier: Modifier = Modifier) {
     var input by remember { mutableStateOf("") }
+    var result by remember { mutableStateOf("") }
 
     Column(
         modifier = modifier
@@ -72,5 +73,23 @@ fun CyclesScreen(modifier: Modifier = Modifier) {
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             modifier = Modifier.fillMaxWidth()
         )
+
+        Button(
+            onClick = {
+                val n = input.trim().toIntOrNull()
+                result = if (n != null && n in 1..1_000_000) {
+                    "S = ${sumFor(n)}"
+                } else {
+                    "Введите натуральное число n"
+                }
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Вычислить")
+        }
+
+        if (result.isNotEmpty()) {
+            Text(result, textAlign = TextAlign.Center)
+        }
     }
 }
