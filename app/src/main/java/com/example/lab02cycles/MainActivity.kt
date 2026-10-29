@@ -93,3 +93,11 @@ fun CyclesScreen(modifier: Modifier = Modifier) {
         }
     }
 }
+
+@Preview(showBackground = true)
+@Composable
+fun CyclesScreenPreview() {
+    Lab02CyclesTheme {
+        CyclesScreen()
+    }
+}
