@@ -49,3 +49,28 @@ fun sumFor(n: Int): Double {
     }
     return sum
 }
+
+@Composable
+fun CyclesScreen(modifier: Modifier = Modifier) {
+    var input by remember { mutableStateOf("") }
+
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterVertically)
+    ) {
+        Text("S = 1/1! + 1/2! + ... + 1/n!", textAlign = TextAlign.Center)
+
+        OutlinedTextField(
+            value = input,
+            onValueChange = { input = it },
+            label = { Text("n") },
+            singleLine = true,
+            textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            modifier = Modifier.fillMaxWidth()
+        )
+    }
+}
